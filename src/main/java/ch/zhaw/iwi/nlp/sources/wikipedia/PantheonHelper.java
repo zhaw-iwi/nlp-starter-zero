@@ -21,8 +21,7 @@ public class PantheonHelper {
 	 * @throws IOException
 	 * @throws CsvValidationException
 	 */
-	public static List<HistoricalFigure> readFromCSV(String filePath, HistoricalFigureFactory factory)
-			throws IOException, CsvValidationException {
+	public static List<HistoricalFigure> readFromCSV(String filePath) throws IOException, CsvValidationException {
 		System.out.println("> Reading from CSV: START");
 
 		List<HistoricalFigure> result = new ArrayList<HistoricalFigure>();
@@ -62,7 +61,7 @@ public class PantheonHelper {
 			gender = row[12];
 			occupation = row[13];
 
-			result.add(factory.create(name, country, birthYear, birthCity, gender.toLowerCase(),
+			result.add(new HistoricalFigure(name, country, birthYear, birthCity, gender.toLowerCase(),
 					occupation.toLowerCase()));
 
 			row = csvReader.readNext();
