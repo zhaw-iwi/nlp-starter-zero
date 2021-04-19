@@ -1,23 +1,31 @@
 package ch.zhaw.iwi.nlp.corenlp;
 
 import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 
 public class FileWriteHelper {
 
 	private static final String FILE_T2F = "Text2Facts";
 	private static final String FILE_F2T = "Facts2Text";
 
-	public static void writeToFile(String news, String facts) throws IOException {
-		BufferedWriter writer = new BufferedWriter(new FileWriter(FileWriteHelper.FILE_T2F, true));
+	public static void writeToFile(String text, String facts) throws IOException {
+		BufferedWriter writer = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream(FileWriteHelper.FILE_T2F, true), StandardCharsets.UTF_8));
 		writer.append("<item>");
+		writer.newLine();
 		writer.append("<text>");
-		writer.append(news);
+		writer.newLine();
+		writer.append(text);
+		writer.newLine();
 		writer.append("</text>");
 		writer.newLine();
 		writer.append("<facts>");
+		writer.newLine();
 		writer.append(facts);
+		writer.newLine();
 		writer.append("</facts>");
 		writer.newLine();
 		writer.append("</item>");
@@ -25,20 +33,25 @@ public class FileWriteHelper {
 		writer.newLine();
 		writer.close();
 
-		writer = new BufferedWriter(new FileWriter(FileWriteHelper.FILE_F2T, true));
+		writer = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream(FileWriteHelper.FILE_F2T, true), StandardCharsets.UTF_8));
 		writer.append("<item>");
+		writer.newLine();
 		writer.append("<facts>");
+		writer.newLine();
 		writer.append(facts);
+		writer.newLine();
 		writer.append("</facts>");
 		writer.newLine();
 		writer.append("<text>");
-		writer.append(news);
+		writer.newLine();
+		writer.append(text);
+		writer.newLine();
 		writer.append("</text>");
 		writer.newLine();
 		writer.append("</item>");
 		writer.newLine();
 		writer.newLine();
 		writer.close();
-
 	}
 }
