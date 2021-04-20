@@ -15,42 +15,26 @@ public class FileWriteHelper {
 		BufferedWriter writer = new BufferedWriter(
 				new OutputStreamWriter(new FileOutputStream(FileWriteHelper.FILE_T2F, true), StandardCharsets.UTF_8));
 		writer.append("<item>");
-		writer.newLine();
 		writer.append("<text>");
-		writer.newLine();
 		writer.append(text);
-		writer.newLine();
 		writer.append("</text>");
-		writer.newLine();
 		writer.append("<facts>");
-		writer.newLine();
 		writer.append(facts);
-		writer.newLine();
 		writer.append("</facts>");
-		writer.newLine();
 		writer.append("</item>");
-		writer.newLine();
 		writer.newLine();
 		writer.close();
 
 		writer = new BufferedWriter(
 				new OutputStreamWriter(new FileOutputStream(FileWriteHelper.FILE_F2T, true), StandardCharsets.UTF_8));
 		writer.append("<item>");
-		writer.newLine();
 		writer.append("<facts>");
-		writer.newLine();
 		writer.append(facts);
-		writer.newLine();
 		writer.append("</facts>");
-		writer.newLine();
 		writer.append("<text>");
-		writer.newLine();
 		writer.append(text);
-		writer.newLine();
 		writer.append("</text>");
-		writer.newLine();
 		writer.append("</item>");
-		writer.newLine();
 		writer.newLine();
 		writer.close();
 	}
