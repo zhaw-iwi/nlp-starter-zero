@@ -41,6 +41,9 @@ public class POSTaggingGerman {
 				System.out.println(String.format("%s\t%s", tok.word(), tok.tag()));
 				// }
 			}
+			
+			currentLine = reader.readNext();
+			n--;
 
 		}
 	}
